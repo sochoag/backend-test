@@ -61,7 +61,7 @@ export class UserController {
     {
       const existingUser = await this.userService.getUser(userId)
       return response.status(HttpStatus.OK).json({
-        message: 'Student found successfully',
+        message: 'User found successfully',
         existingUser
       })
     }
@@ -77,7 +77,7 @@ export class UserController {
     {
       const deletedUser = await this.userService.deleteUser(userId);
       return response.status(HttpStatus.OK).json({
-        message: 'Student deleted successfully',
+        message: 'User deleted successfully',
         deletedUser
       })
     } catch (err)
