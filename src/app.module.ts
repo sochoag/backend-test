@@ -6,6 +6,7 @@ import { UserSchema } from './schema/user.schema';
 import { UserService } from './service/user/user.service';
 import { UserController } from './controller/user/user.controller';
 import { JwtModule } from '@nestjs/jwt';
+import { AuthController } from './controller/auth/auth.controller';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { JwtModule } from '@nestjs/jwt';
     ),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
   ],
-  controllers: [AppController, UserController],
+  controllers: [AppController, UserController, AuthController],
   providers: [AppService, UserService],
 })
 export class AppModule {}
