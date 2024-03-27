@@ -1,12 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserSchema } from './schema/user.schema';
-import { UserService } from './service/user/user.service';
-import { UserController } from './controller/user/user.controller';
-import { JwtModule } from '@nestjs/jwt';
-import { AuthController } from './controller/auth/auth.controller';
+import { UserModule } from './user/user.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [
@@ -14,9 +11,9 @@ import { AuthController } from './controller/auth/auth.controller';
       'mongodb+srv://sochoag:MnwvYyPFnDwkmnto@backend-test.edfvl2l.mongodb.net/',
       { dbName: 'backend-test-db' },
     ),
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+    UserModule
   ],
-  controllers: [AppController, UserController, AuthController],
-  providers: [AppService, UserService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
