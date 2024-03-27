@@ -59,4 +59,15 @@ export class UserService {
     }
     return deletedUser;
   }
+
+  async getUserbyMail(userEmail: string):
+    Promise<IUser>
+  {
+    const userByMail = await this.userModel.findOne({email:userEmail})
+    if (!userByMail)
+    {
+      throw new NotFoundException(`User ${userEmail} not found`)
+    }
+    return userByMail
+  }
 }
